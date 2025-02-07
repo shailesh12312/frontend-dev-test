@@ -1,12 +1,12 @@
-'use client';
+"use client";
 import React from 'react';
 import { Box, Container, Paper, Typography } from '@mui/material';
 import Image from 'next/image';
 import { loginStyles } from '@/styles/login.styles';
 import dynamic from 'next/dynamic';
-const LoginForm = dynamic(() => import('./(login)/login/page'), { ssr: false });
+const LoginForm = dynamic(() => import('../_components/LoginForm'), { ssr: false });
 
-const Home = () => {
+const LoginPage = () => {
   return (
     <Box sx={loginStyles.wrapper}>
       <Container component="main" maxWidth="sm">
@@ -34,4 +34,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default LoginPage; 
