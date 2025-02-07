@@ -1,10 +1,11 @@
 "use client";
 import React from 'react';
-import { Box, Container, Paper, Typography } from '@mui/material';
+import { Container, Paper, Typography } from '@mui/material';
 import Image from 'next/image';
 import { loginStyles } from '@/styles/login.styles';
 import dynamic from 'next/dynamic';
 const LoginForm = dynamic(() => import('../_components/LoginForm'), { ssr: false });
+const Box = dynamic(() => import('@mui/material').then(mod => mod.Box), { ssr: false });
 
 const LoginPage = () => {
   return (

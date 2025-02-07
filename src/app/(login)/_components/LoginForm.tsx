@@ -8,17 +8,18 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/redux/store';
 import { loginUser } from '@/redux/slices/authSlice';
 import toast from 'react-hot-toast';
+import Cookie from '@/utils/cookie';
 
 const INITIAL_STATE = { email: '', password: '' };
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_PASSWORD_LENGTH = 6;
 
 const LoginForm = () => {
+    const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [credentials, setCredentials] = useState<LoginCredentials>(INITIAL_STATE);
     const [errors, setErrors] = useState<LoginErrors>(INITIAL_STATE);
 
-    const router = useRouter();
     const dispatch = useDispatch<AppDispatch>();
 
     const validateField = (name: string, value: string): string => {
@@ -56,14 +57,15 @@ const LoginForm = () => {
         return !newErrors.email && !newErrors.password;
     };
 
+    
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!validateForm()) return;
-
         setLoading(true);
         try {
             const resultAction = await dispatch(loginUser(credentials));
             if (loginUser.fulfilled.match(resultAction)) {
+                Cookie.set('jwt', resultAction.payload.token);
                 router.push('/dashboard');
                 toast.success('Login successful!');
             } else {
@@ -94,7 +96,12 @@ const LoginForm = () => {
                         onChange={handleInputChange}
                         onBlur={handleBlur}
                         placeholder={`Enter your ${field}`}
-                        sx={loginStyles.textField}
+                        autoComplete={field === 'email' ? 'username' : 'current-password'}
+                        InputLabelProps={{ shrink: true }}
+                        inputProps={{
+                            autoCapitalize: 'none',
+                            autoCorrect: 'off'
+                        }}
                     />
                 ))}
                 <Button
