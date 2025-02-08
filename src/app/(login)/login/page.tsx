@@ -3,9 +3,8 @@ import React from 'react';
 import { Container, Paper, Typography } from '@mui/material';
 import Image from 'next/image';
 import { loginStyles } from '@/styles/login.styles';
-import dynamic from 'next/dynamic';
-const LoginForm = dynamic(() => import('../_components/LoginForm'), { ssr: false });
-const Box = dynamic(() => import('@mui/material').then(mod => mod.Box), { ssr: false });
+import LoginForm from '../_components/LoginForm';
+import { Box } from '@mui/material';
 
 const LoginPage = () => {
   return (

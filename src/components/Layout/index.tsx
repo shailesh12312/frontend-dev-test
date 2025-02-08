@@ -1,5 +1,5 @@
 "use client";
-import Sidebar from '../Sidebar';
+import Sidebar from '@/components/Sidebar';
 import dynamic from 'next/dynamic';
 const Box = dynamic(() => import('@mui/material/Box'), { ssr: false });
 
