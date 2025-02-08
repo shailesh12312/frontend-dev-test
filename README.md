@@ -28,7 +28,7 @@ yarn dev
 
 3. Run tests:
 ```bash
-npm test
+npm run test
 # or
 yarn test
 ```
@@ -69,3 +69,13 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Running Tests
+
+To run the test cases, use the following command:
+
+```bash
+npm test
+```
+
+This addition provides clear instructions on how to execute the test cases for your project.
