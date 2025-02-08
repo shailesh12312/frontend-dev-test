@@ -1,3 +1,4 @@
+"use client";
 import Layout from "@/components/Layout";
 
 export default function DashboardLayout({
@@ -7,7 +8,7 @@ export default function DashboardLayout({
 }) {
   return (
     <Layout>
-        {children}
+      {children}
     </Layout>
   );
 }

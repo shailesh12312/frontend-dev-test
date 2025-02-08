@@ -24,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ fontFamily: poppins.style.fontFamily }}>
-        <MuiThemeProvider>
         <Toaster position="top-right" />
-        <ReduxProvider>
-          {children}
-        </ReduxProvider>
+        <MuiThemeProvider>
+          <ReduxProvider>
+            {children}
+          </ReduxProvider>
         </MuiThemeProvider>
       </body>
     </html>

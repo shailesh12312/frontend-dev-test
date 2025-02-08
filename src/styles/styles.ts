@@ -1,5 +1,5 @@
 import { Theme } from '@mui/material';
-const DRAWER_WIDTH = 240;
+
 export const sidebarStyles = {
   container: {
     display: 'flex'
@@ -10,8 +10,8 @@ export const sidebarStyles = {
     '& .MuiDrawer-paper': {
       width: DRAWER_WIDTH,
       boxSizing: 'border-box',
-      background: theme.palette.primary.main,
-      color: 'white',
+      background: 'linear-gradient(180deg, #2C3E50 0%, #34495E 100%)',
+      color: '#ECF0F1',
       borderRight: 'none',
       zIndex: theme.zIndex.appBar - 1
     }
@@ -51,8 +51,10 @@ export const sidebarStyles = {
   menuItem: {
     borderRadius: 1,
     mb: 0.5,
+    transition: 'all 0.2s ease',
     '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.1)'
+      backgroundColor: 'rgba(236, 240, 241, 0.1)',
+      transform: 'translateX(3px)'
     }
   },
   menuIcon: {
@@ -62,10 +64,10 @@ export const sidebarStyles = {
   appBar: (theme: Theme, DRAWER_WIDTH: number, isMobile: boolean) => ({
     width: `calc(100% - ${isMobile ? 0 : DRAWER_WIDTH}px)`,
     ml: isMobile ? 0 : `${DRAWER_WIDTH}px`,
-    backdropFilter: 'blur(6px)',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    color: theme.palette.primary.main,
-    boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+    backdropFilter: 'blur(8px)',
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    color: '#2C3E50',
+    boxShadow: '0 2px 12px rgba(44, 62, 80, 0.1)'
   }),
   toolbar: {
     justifyContent: 'space-between'

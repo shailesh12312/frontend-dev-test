@@ -1,11 +1,10 @@
-import React from 'react'
-import { Typography } from '@mui/material';
-import { DashboardTable } from '../_components/DashboardTable';
+import React, { Suspense } from 'react'
+import DashboardTable from '../_components/DashboardTable';
 
 export default function Page() {
   return (
-    <div>
+    <Suspense fallback="">
       <DashboardTable/>
-    </div>
+    </Suspense>
   )
 }

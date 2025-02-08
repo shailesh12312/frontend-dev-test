@@ -1,7 +1,7 @@
 import { 
   Table, TableBody, TableCell, TableContainer, TableHead, 
   TableRow, Paper, TablePagination, useTheme, useMediaQuery,
-  Chip, Box
+  Chip, Box, Typography
 } from '@mui/material';
 import { useState } from 'react';
 
@@ -38,34 +38,57 @@ export const DataTable = ({ columns, rows }: DataTableProps) => {
   };
 
   const renderCellContent = (column: Column, value: any) => {
-    if (column.id === 'status') {
-      return (
-        <Chip 
-          label={value}
-          color={getStatusColor(value) as any}
-          size="small"
-          sx={{ minWidth: 85 }}
-        />
-      );
+    switch (column.id) {
+      case 'image':
+        return (
+          <Box
+            component="img"
+            src={value}
+            alt="Product"
+            sx={{
+              width: 50,
+              height: 50,
+              borderRadius: 1,
+              objectFit: 'cover',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }}
+          />
+        );
+      case 'status':
+        return (
+          <Chip 
+            label={value}
+            color={
+              value === 'In Stock' ? 'success' : 
+              value === 'Low Stock' ? 'warning' : 'error'
+            }
+            variant="outlined"
+            size="small"
+            sx={{ minWidth: 90 }}
+          />
+        );
+      case 'price':
+        return (
+          <Typography color="primary.main" fontWeight="medium">
+            {value}
+          </Typography>
+        );
+      case 'rating':
+        return (
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+            <Typography color="warning.main">{value}</Typography>
+            <Typography color="warning.main" fontSize="small">★</Typography>
+          </Box>
+        );
+      case 'sales':
+        return (
+          <Typography color="success.main" fontWeight="medium">
+            {value}
+          </Typography>
+        );
+      default:
+        return value;
     }
-    if (column.id === 'progress') {
-      return (
-        <Box sx={{ 
-          backgroundColor: '#f0f0f0',
-          borderRadius: 1,
-          p: 0.5,
-          width: 100
-        }}>
-          <Box sx={{
-            width: value,
-            height: 6,
-            borderRadius: 1,
-            backgroundColor: theme.palette.primary.main
-          }} />
-        </Box>
-      );
-    }
-    return value;
   };
 
   return (

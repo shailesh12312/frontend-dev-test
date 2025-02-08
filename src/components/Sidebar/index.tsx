@@ -1,10 +1,12 @@
 "use client";
-import React, { Fragment, useState } from 'react'
-import { AppBar, Drawer, ListItem, List, ListItemText, Toolbar, IconButton, useTheme, useMediaQuery, Box, Typography, ListItemIcon, Divider, Avatar, Button } from '@mui/material'
+import React, { useState } from 'react'
+import { AppBar, Drawer, ListItem, List, ListItemText, Toolbar, IconButton, useTheme, useMediaQuery, Typography, ListItemIcon, Divider, Avatar, Button } from '@mui/material'
 import { LayoutDashboard, Settings, Users, FileText, Bell, LogOut, Menu, ChevronLeft, ChevronRight, User } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { sidebarStyles } from './styles';
+import { sidebarStyles } from '../../styles/styles';
 import Cookie from '@/utils/cookie';
+import dynamic from 'next/dynamic';
+const Box = dynamic(() => import('@mui/material/Box'), { ssr: false });
 
 const DRAWER_WIDTH = 240;
 
