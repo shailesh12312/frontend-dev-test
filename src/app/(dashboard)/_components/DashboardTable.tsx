@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, setCurrentPage, setRowsPerPage } from '@/redux/slices/productSlice';
 import { RootState, AppDispatch } from '@/redux/store';
-import { Box, Typography, Card, TableBody, TableCell, TableHead, TableRow, TablePagination, CircularProgress } from '@mui/material';
+import { Box, TableBody, TableCell, TableHead, TableRow, TablePagination, CircularProgress } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { dashboardTableStyles as styles } from '@/styles/DashboardTable.styles';
 import { Product } from '@/types/product';
@@ -20,18 +20,6 @@ const DynamicTable = dynamic(
 const DynamicTableContainer = dynamic(
   () => import('@mui/material').then((mod) => mod.TableContainer),
   { ssr: false }
-);
-
-const TableHeader = () => (
-  <TableHead>
-    <TableRow sx={styles.tableHeaderRow}>
-      {['Id', 'Image', 'Title', 'Price', 'Category', 'Brand', 'Model', 'Color', 'Discount'].map((header) => (
-        <TableCell key={header} sx={styles.tableHeaderCell}>
-          {header}
-        </TableCell>
-      ))}
-    </TableRow>
-  </TableHead>
 );
 
 export default function DashboardTable() {
@@ -54,17 +42,20 @@ export default function DashboardTable() {
     dispatch(setRowsPerPage(parseInt(event.target.value, 10)));
   };
 
-  return (
-    <Card sx={styles.card}>
-      <Box sx={styles.headerBox}>
-        <Typography variant="h5" fontWeight={600} color="text.primary">
-          Product Inventory
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Manage your products, stock levels and pricing
-        </Typography>
-      </Box>
+  const TableHeader = () => (
+    <TableHead>
+      <TableRow sx={styles.tableHeaderRow}>
+        {['Id', 'Image', 'Title', 'Price', 'Category', 'Brand', 'Model', 'Color', 'Discount'].map((header) => (
+          <TableCell key={header} sx={styles.tableHeaderCell}>
+            {header}
+          </TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
+  );
 
+  return (
+    <Fragment>
       {loading ? (
         <Box sx={styles.loaderWrapper}>
           <CircularProgress size={30} thickness={4} />
@@ -100,6 +91,6 @@ export default function DashboardTable() {
           sx={styles.pagination}
         />
       </Box>
-    </Card>
+    </Fragment>
   );
 }

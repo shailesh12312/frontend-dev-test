@@ -1,7 +1,6 @@
 "use client";
 import Sidebar from '@/components/Sidebar';
-import dynamic from 'next/dynamic';
-const Box = dynamic(() => import('@mui/material/Box'), { ssr: false });
+import { Box } from '@mui/material';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (

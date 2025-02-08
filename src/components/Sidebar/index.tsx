@@ -2,9 +2,10 @@
 import React, { useState } from 'react'
 import { AppBar, Drawer, ListItem, List, ListItemText, Toolbar, IconButton, useTheme, useMediaQuery, Typography, ListItemIcon, Divider, Avatar, Box } from '@mui/material'
 import { LayoutDashboard, Settings, Users, FileText, Bell, LogOut, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { sidebarStyles } from '@/styles/sidebar.styles';
-import LogoutModal from '@/components/LogoutModal';
+import dynamic from 'next/dynamic';
+const LogoutModal = dynamic(() => import('@/components/LogoutModal'), { ssr: false });
 
 const DRAWER_WIDTH = 240;
 

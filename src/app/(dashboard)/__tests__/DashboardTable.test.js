@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import DashboardTable from '../app/(dashboard)/_components/DashboardTable';
+import DashboardTable from '@/app/(dashboard)/_components/DashboardTable';
 import { ReduxProvider } from '@/redux/provider';
 
 jest.mock('next/dynamic', () => () => {
@@ -9,20 +9,14 @@ jest.mock('next/dynamic', () => () => {
   };
 });
 
-const renderDashboardTable = () => {
-  return render(
-    <ReduxProvider>
-      <DashboardTable />
-    </ReduxProvider>
-  );
-};
-
 describe('DashboardTable', () => {
-  it('renders the table header correctly', () => {
-    renderDashboardTable();
-    expect(screen.getByText('Product Inventory')).toBeInTheDocument();
-    expect(screen.getByText('Manage your products, stock levels and pricing')).toBeInTheDocument();
-  });
+  const renderDashboardTable = () => {
+    return render(
+      <ReduxProvider>
+        <DashboardTable />
+      </ReduxProvider>
+    );
+  };
 
   it('displays loading state', () => {
     renderDashboardTable();
