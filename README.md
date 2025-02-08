@@ -1,22 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project Name
+
+A Next.js application with TypeScript, Redux, and Testing Library integration.
+
+## Tech Stack
+
+- Next.js 14
+- TypeScript
+- Redux Toolkit
+- React Testing Library
+- Jest
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
+2. Run development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Run tests:
+```bash
+npm test
+# or
+yarn test
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js app directory
+│   ├── (dashboard)/       # Dashboard routes & components
+│   │   └── _components/   
+│   │       └── DashboardTable.tsx
+│   ├── (login)/          # Login routes & components
+│   └── layout.tsx        # Root layout
+├── __tests__/            # Test files
+│   ├── DashboardTable.test.js
+│   └── LoginPage.test.js
+└── redux/
+    └── slices/           # Redux state management
+        └── productSlice.ts
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
