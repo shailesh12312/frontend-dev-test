@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { AppBar, Drawer, ListItem, List, ListItemText, Toolbar, IconButton, useTheme, useMediaQuery, Typography, ListItemIcon, Divider, Avatar, Box } from '@mui/material'
 import { LayoutDashboard, Settings, Users, FileText, Bell, LogOut, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { sidebarStyles } from '@/styles/sidebar.styles';
 import LogoutModal from '@/components/LogoutModal';
 
@@ -58,12 +58,14 @@ const Sidebar = () => {
 					<Divider sx={sidebarStyles.divider} />
 
 					<List sx={sidebarStyles.menuList}>
-						{menuItems.map((item) => (
+						{menuItems.map((item,index) => (
 							<ListItem 
-								button 
 								key={item.text}
 								onClick={() => router.push(item.path)}
-								sx={sidebarStyles.menuItem}
+                sx={[
+									sidebarStyles.menuItem,
+									index === 0 && sidebarStyles.activeMenuItem
+								]}
 							>
 								<ListItemIcon sx={sidebarStyles.menuIcon}>{item.icon}</ListItemIcon>
 								<ListItemText primary={item.text} />

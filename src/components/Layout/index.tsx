@@ -11,7 +11,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
+          p: { xs: 0, sm: 3 },
           marginTop: '64px',
         }}
       >

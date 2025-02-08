@@ -51,11 +51,16 @@ export const sidebarStyles = {
   menuItem: {
     borderRadius: 1,
     mb: 0.5,
+    cursor: 'pointer',
     transition: 'all 0.2s ease',
     '&:hover': {
       backgroundColor: 'rgba(236, 240, 241, 0.1)',
       transform: 'translateX(3px)'
     }
+  },
+  activeMenuItem: {
+    backgroundColor: 'rgba(236, 240, 241, 0.15) !important',
+    transform: 'translateX(3px)'
   },
   menuIcon: {
     color: 'white', 
